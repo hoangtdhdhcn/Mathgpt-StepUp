@@ -26,14 +26,18 @@ def lvlm(image: Image.Image, user_question: str):
     response = client.chat.completions.create(
         model=MODEL,  # Replace with the correct model name
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": f"Please help me with the following question: {user_question}"},
-            {"role": "user", "content": f"Here is the image you need to analyze: data:image/png;base64,{base64_image}"}
+            {"role": "system", "content": "You are a helpful assistant that responds in Vietnamese. Help me solve my math homework step-by-step. Note that put the formulas in a pair of $$."},
+            {"role": "user", "content": [
+                {"type": "text", "text": user_question},
+                {"type": "image_url", "image_url": {
+                    "url": f"data:image/png;base64,{base64_image}"}
+                }
+            ]}
         ],
         temperature=0.0,
     )
 
-    return response.choices[0].message['content']
+    return response.choices[0].message.content
 
 if __name__ == '__main__':
     # Streamlit app layout
@@ -62,5 +66,4 @@ if __name__ == '__main__':
             if user_question:
                 result = lvlm(captured_image, user_question)  # Pass PIL Image object
                 st.write(result)
-
 
