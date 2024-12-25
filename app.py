@@ -6,7 +6,7 @@ from PIL import Image
 from io import BytesIO
 
 # Set the API key and model name
-MODEL = "gpt-4o-mini"
+MODEL = "gpt-4o"
 api_key = st.secrets["auth_token"]
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", api_key))
 
