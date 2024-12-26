@@ -6,7 +6,7 @@ from PIL import Image
 from io import BytesIO
 
 # Set the API key and model name
-MODEL = "gpt-4o"
+MODEL = "gpt-4-turbo"
 api_key = st.secrets["auth_token"]
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", api_key))
 
@@ -39,7 +39,7 @@ def lvlm(image: Image.Image, user_question: str):
         model=MODEL,
         messages=[{
             "role": "system", 
-            "content": "You are a helpful assistant that responds in Vietnamese. Help me solve my math homework step-by-step. Note that put the formulas in a pair of $$."
+            "content": "You are a helpful assistant that responds in Vietnamese. Help me solve my math homework step-by-step. Note that put the formulas in a pair of $."
         }, {
             "role": "user", 
             "content": [
