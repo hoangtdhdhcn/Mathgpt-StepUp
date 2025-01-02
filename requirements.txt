@@ -2,3 +2,4 @@ openai
 streamlit
 opencv-python
 Pillow
+streamlit-drawable-canvas
