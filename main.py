@@ -8,7 +8,8 @@ import base64
 
 # Set the OpenAI API key
 MODEL = "gpt-4-turbo"
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
+api_key = st.secrets["auth_token"]
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", api_key))
 
 
 # Function to encode image as base64 
