@@ -1,5 +1,5 @@
 openai
-streamlit
+streamlit==1.39
 opencv-python
 Pillow
 streamlit-drawable-canvas
